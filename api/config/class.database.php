@@ -11,7 +11,7 @@ class dbconnection{
 	public $options = array(
 		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
 	);
-	//echo"test";
+	//connect to database
 	function connect(){
 	try{
 		$this->db_conn = new PDO("mysql:host=$this->db_host;dbname=$this->db_name"
