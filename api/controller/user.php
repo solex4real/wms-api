@@ -81,7 +81,7 @@ function register(){
 	$user = new users();
 	//Check if they are valid input
 	if($user->username_validate($username)&&!empty($username)&&
-		$user->valid_validate($email)&&!empty($email)&&
+		$user->email_validate($email)&&!empty($email)&&
 		preg_match("/^[a-zA-Z ]*$/",$name)&&!empty($name)&&
 		!empty($password)&&!empty($phone)
 	){
@@ -97,7 +97,7 @@ function register(){
 		//If successful get user token
 		if($result['success']){
 			$auth = new Auth();
-			$data = $auth->create_auth($result['user_id']);
+			$data = $auth->create_auth($result['id']);
 			if($data['success']){
 				$data['message'] = "Successful!";
 				print(json_encode($data));

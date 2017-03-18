@@ -89,8 +89,9 @@ class users{
 		//Perform Query 
 		$query = $this->link->prepare( "INSERT INTO `users` (`name`,`username`,`password`,`salt`,`email`,
 			`phone`,`date_created`,`date_modified`) VALUES (?,?,?,?,?,?,?,?)" );
-		$query->execute($data['name'],$data['username'],$hash,$salt,$data['email'],$data['phone'],
+		$values = array($data['name'],$data['username'],$hash,$salt,$data['email'],$data['phone'],
 			$date_created,$date_modified);
+		$query->execute($values);
 		if ($query->rowCount () > 0) {
 			return array("success"=>true,
 				"id"=>$this->link->lastInsertId());
